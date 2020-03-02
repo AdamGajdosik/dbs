@@ -16,5 +16,10 @@ class Database:
         except:
             return 0
     
-    
+    def disconnect(self):
+        try:
+            self.connection.close()
+            return 1
+        except:
+            return 0    
 
