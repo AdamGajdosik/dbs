@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 
-import database_controller
+from database_controller import *
+from config_parser import *
+
+parser = ConfigParser()
+db = parser.getDatabaseAcces()
 
 
