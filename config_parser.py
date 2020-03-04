@@ -1,23 +1,25 @@
 #!/usr/bin/python3
 
+conf_file = "config.conf"
+
 class ConfigParser:
     def __init__(self):
-
-        self.conf_file = "config.conf"
-
         try:
-            open_conf = open(self.conf_file,"r")
+            open_conf = open(conf_file,"r")
             open_conf.close()
         except:
             print("[-] Error! Missing config file")
             exit()
 
-
-    def getDatabaseAcces(self):
+    @staticmethod
+    def getDatabaseAcces():
         
         line = ""
         return_dict = {}
-        open_conf = open(self.conf_file,"r")
+        try:
+            open_conf = open(conf_file,"r")
+        except:
+            print("[-] Missing config file")
 
         while line != "#database_acces\n" and line !="END\n":
             line = open_conf.readline()
