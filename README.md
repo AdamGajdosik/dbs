@@ -16,10 +16,19 @@ linux terminal:
 Tabulky:
 
 users_list:
+id(6) | name(20) | second_name(20) | password/hash(20) | email(30) | reg_day(8) | balance
 
-id(6) | name(20) | second_name(20) | password/hash(20) | email(30) | reg_day(8)
+horses:
 
+tracks:
 
+races:
+
+logs:
+
+bets:
+
+money_transactions:
 
 
 Database_controller.py navod:

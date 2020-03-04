@@ -28,14 +28,34 @@ class Database:
         self.connection.ping(reconnect=True)
         self.cursor.execute(command)
         self.connection.commit()
-        printf("[+] Done!")
+        records = self.cursor.fetchall()
+        
+        print(records)
+        print("[+] Done!")
+
+        if len(records) != 0:
+            return records
+        else:
+            return 0
 
     def addUser(self,name,second_name,password,email,reg_day):
         values = "values ( '" + name + "','" + second_name + "','" + password + "','" + email + "','" + reg_day + "' )"
         command = "INSERT INTO users_list(name,second_name,password,email,reg_day) " + values
         cemm = "insert into users_list(name,second_name,password,email,reg_day) VALUES('Adam','Gajdosik','hehahe','mail','12121212');"
-        print(command)
         self.execute_command(command)
+
+    def listUsers(self):
+        command = "SELECT * FROM users_list"
+        self.execute_command(command)
+
+    def test(self):
+        command = "INSERT INTO test VALUES('test')"
+        self.execute_command(command)
+    
+    def listTest(self):
+        command = "SELECT * FROM test"
+        return self.execute_command(command)
+
 
     
 

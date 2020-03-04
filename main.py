@@ -10,6 +10,7 @@ def main():
     db_acces = ConfigParser.getDatabaseAcces()
     database = Database(db_acces["host"],db_acces["user"],db_acces["password"],db_acces["database_name"])
     print(database.connect())
+    print(database.listTest())
     print(database.disconnect())
 
 
