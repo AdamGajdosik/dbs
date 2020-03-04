@@ -19,17 +19,22 @@ users_list:
 id(6) | name(20) | second_name(20) | password/hash(20) | email(30) | reg_day(8) | balance
 
 horses:
+id() | name() | sortPriority() | status() | adjustementFactor?()
 
 tracks:
+country() | venue() | timezone() 
 
 races:
+id() | eventTypeId() | eventName() | numberOfWinners() | complete() | runners()
 
 logs:
+id() | fromUser() | severity() | time()
 
 bets:
+id() | fromUser() | matchId() | amount() | time() | currency()
 
 money_transactions:
-
+id() | type() | amount() | time()
 
 Database_controller.py navod:
 
