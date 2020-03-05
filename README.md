@@ -22,7 +22,7 @@ horses:
 id() | name() | sortPriority() | status() | adjustementFactor?()
 
 tracks:
-country() | venue() | timezone() 
+id() | country() | venue() | timezone() 
 
 races:
 id() | eventTypeId() | eventName() | numberOfWinners() | complete() | runners()
@@ -34,7 +34,7 @@ bets:
 id() | fromUser() | matchId() | amount() | time() | currency()
 
 money_transactions:
-id() | type() | amount() | time()
+id() | type() | amount() | time() | sender_id() | receiver_id()
 
 Database_controller.py navod:
 
@@ -45,6 +45,8 @@ Database_controller.py navod:
     hnus.disconnect() - odpoji od databazy
 
     hnus.addUser(meno,priezvisko,heslo,email,den_registracie)
+
+    hnus.listUsers() - vrati zoznam uzivatelov
 
 Config_parser.py navod:
 
