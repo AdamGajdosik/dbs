@@ -8,7 +8,7 @@ class App:
         self.root = root
         self.builder = pygubu.Builder()
         builder = self.builder
-        builder.add_from_file("heh.ui")
+        builder.add_from_file("./gui_xml_files/heh.ui")
         self.window = builder.get_object("Frame_1",root)
 
         builder.connect_callbacks(self)
