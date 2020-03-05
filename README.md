@@ -51,3 +51,6 @@ Database_controller.py navod:
 Config_parser.py navod:
 
     ConfigParser.getDatabaseAcces() - vrati dictionary s pristupovymi udajmi do DB
+
+
+    
