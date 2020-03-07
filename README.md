@@ -59,9 +59,9 @@ Config_parser.py navod:
 
  -  Verzia: v1.0
  -  Scenár: 1
- -  Milestone: tba
+ -  Milestone: [Registrácia a prihlásenie používateľa](https://github.com/AdamGajdosik/dbs/milestone/1)
  -  Issues
-      -  tba
+      -  [Registrácia](/../../issues/1)
 
 Pouzívateľ sa vie do systému zaregistrovať pomocou emailu a hesla. Po verifikovaní emailu sa pomocou emailu a hesla dokáže do aplikácie prihlásiť
 
