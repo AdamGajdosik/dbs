@@ -11,7 +11,7 @@ users_list:
 id(6) | name(20) | second_name(20) | password/hash(20) | email(30) | reg_day(8) | balance
 
 horses:
-id() | name() | sortPriority() | status() | adjustementFactor?()
+id(6) | name(20) | sortPriority() | status() | adjustementFactor?()
 
 tracks:
 id() | country() | venue() | timezone() 
@@ -45,4 +45,3 @@ Config_parser.py navod:
     ConfigParser.getDatabaseAcces() - vrati dictionary s pristupovymi udajmi do DB
 
 
-    
