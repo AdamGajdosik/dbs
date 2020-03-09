@@ -24,7 +24,7 @@ class Database:
         except:
             return 0
 
-    def execute_command(self,command):
+    def executeCommand(self,command):
         self.connection.ping(reconnect=True)
         self.cursor.execute(command)
         self.connection.commit()
@@ -38,23 +38,23 @@ class Database:
         else:
             return 0
 
-    def addUser(self,name,second_name,password,email,reg_day):
-        values = "values ( '" + name + "','" + second_name + "','" + password + "','" + email + "','" + reg_day + "' )"
+    def addUser(self,name,secondName,password,email,reg_day):
+        values = "values ( '" + name + "','" + secondName + "','" + password + "','" + email + "','" + reg_day + "' )"
         command = "INSERT INTO users_list(name,second_name,password,email,reg_day) " + values
-        cemm = "insert into users_list(name,second_name,password,email,reg_day) VALUES('Adam','Gajdosik','hehahe','mail','12121212');"
-        self.execute_command(command)
+        #cemm = "insert into users_list(name,secondName,password,email,reg_day) VALUES('Adam','Gajdosik','hehahe','mail','12121212');"
+        self.executeCommand(command)
 
     def listUsers(self):
         command = "SELECT * FROM users_list"
-        self.execute_command(command)
+        self.executeCommand(command)
 
     def test(self):
         command = "INSERT INTO test VALUES('test')"
-        self.execute_command(command)
+        self.executeCommand(command)
     
     def listTest(self):
         command = "SELECT * FROM test"
-        return self.execute_command(command)
+        return self.executeCommand(command)
 
 
     
