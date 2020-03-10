@@ -2,6 +2,7 @@
 
 from database_controller import *
 from config_parser import *
+from datetime import date
 
 
 class Application:
@@ -9,7 +10,7 @@ class Application:
 
         self.logged = 0
         self.user_id = None
-
+        print(date.today())
         db_acces = ConfigParser.getDatabaseAcces()
         self.database = Database(db_acces["host"],db_acces["user"],db_acces["password"],db_acces["database_name"])
         self.database.connect()

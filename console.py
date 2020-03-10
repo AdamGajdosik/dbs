@@ -8,7 +8,9 @@ def register(app):
     email = input("Email: ")
     password = input("Password: ")
     passwordSecond = input("Repeat: ")
-    app.register(name,secondName,password,passwordSecond,email)
+    out = app.register(name,secondName,password,passwordSecond,email)
+    if out == 1:
+        print("[+] Succes!")
 
 
 
