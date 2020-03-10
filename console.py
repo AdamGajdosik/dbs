@@ -9,6 +9,7 @@ def register(app):
     loginName = input("Login name: ")
     password = input("Password: ")
     passwordSecond = input("Repeat: ")
+<<<<<<< HEAD
     out = app.register(name,secondName,password,passwordSecond,email,loginName)
     if out == 1:
         print("[+] Succes!")
@@ -23,6 +24,12 @@ def login(app):
         print("[+] Succesfuly logged in!")
     else:
         print("[-] Wrong username or password")
+=======
+    out = app.register(name,secondName,password,passwordSecond,email)
+    if out == 1:
+        print("[+] Succes!")
+
+>>>>>>> master
 
 def loginMenu(app):
 
