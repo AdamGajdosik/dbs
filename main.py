@@ -13,6 +13,8 @@ class Application:
         db_acces = ConfigParser.getDatabaseAcces()
         self.database = Database(db_acces["host"],db_acces["user"],db_acces["password"],db_acces["database_name"])
         self.database.connect()
+        self.database.listUsers()
+        self.database.listHorses()
         print("[+] Connected to database!")
 
     def register(self,name,secondName,password,passwordSecond,email):
@@ -21,6 +23,20 @@ class Application:
             return 1
         else:
             return 0
+
+    def dataImport(self, id, name, sortPriority, status, venue, country, timezone):
+        #print("meno", name)
+        #print("som tu")
+        same = self.database.testForSameTracks(venue)
+        if same:
+            #print("uz tam je")
+            return
+        else:
+            print("adding")
+            #self.database.addHorse(id, name, sortPriority, status)
+            self.database.addTrack(venue,country,timezone)
+
+
             
 
 

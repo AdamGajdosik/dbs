@@ -17,9 +17,8 @@ def main():
     print("Hello, what now?")
     while True:
         print("1, login\n2, register\n0, exit")
-
+        
         comm = input(">> ")
-
         if comm == "2":
             register(app)
 

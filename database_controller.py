@@ -30,7 +30,7 @@ class Database:
         self.connection.commit()
         records = self.cursor.fetchall()
         
-        print(records)
+       #print(records)
         print("[+] Done!")
 
         if len(records) != 0:
@@ -56,9 +56,35 @@ class Database:
         command = "SELECT * FROM test"
         return self.executeCommand(command)
 
+    def addHorse(self, id, name, sortPriority, status):
+        command = ("INSERT INTO horses(id,name,sorting_priority,status) values(%d,'%s',%d,'%s')"%(id, name, sortPriority, status))
+        #print(command)
+        self.executeCommand(command)
 
-    
+    def listHorses(self):
+        command = "SELECT * from horses"
+        self.executeCommand(command)
+
+    def testForSame(self, name):
+        command = "SELECT EXISTS(SELECT * from horses where name=" + "'" + name + "'" + ");"
+        return self.executeCommand(command)[0][0]
+
+    def addTrack(self, venue, country, timezone):
+        command = ("INSERT INTO tracks(name,country,timezone) values('%s','%s','%s')"%(venue,country,timezone))
+        self.executeCommand(command)
+
+    def testForSameTracks(self, name):
+        command = "SELECT EXISTS(SELECT * from tracks where name=" + "'" + name + "'" + ");"
+        return self.executeCommand(command)[0][0]
+
+    def addRace(self, id, name, eventId, timezone, numberOfWinners, complete, runners):
+        return
 
 
 
 
+
+
+ 
+
+    #INSERT INTO horses(id,name,sorting_priority,status) values ( '11184603','Glimpse of Gold','1','ACTIVE' )
