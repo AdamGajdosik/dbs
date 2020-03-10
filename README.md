@@ -36,7 +36,7 @@ Database_controller.py navod:
 
     hnus.disconnect() - odpoji od databazy
 
-    hnus.addUser(meno,priezvisko,heslo,email,den_registracie)
+    hnus.addUser(meno,priezvisko,heslo,email,den_registracie,prihlasovacie_meno)
 
     hnus.listUsers() - vrati zoznam uzivatelov
 

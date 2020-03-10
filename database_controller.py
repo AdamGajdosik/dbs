@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
 import pymysql
+from datetime import date
+from datetime import datetime
 
 class Database:
 
@@ -44,11 +46,20 @@ class Database:
             return 0
 
     # registracia uzivatela
-    def addUser(self,name,secondName,password,email,reg_day,loginName):
+    def addUser(self,name,secondName,password,email,loginName):
+
+        # upravenie datumu na string ddmmrrrr
+        today_date = str(date.today()).split("-")
+        reg_day = today_date[2] + today_date[1] + today_date[0]
 
         values = "values ( '" + name + "','" + secondName + "','" + password + "','" + email + "','" + reg_day + "','" + loginName + "')"
         command = "INSERT INTO users_list(name,second_name,password,email,reg_day,login_username) " + values
         
+        self.executeCommand(command)
+
+    # vrati vsetkych uzivatelov
+    def listUsers(self):
+        command = "SELECT name,second_name,email FROM users_list"
         self.executeCommand(command)
 
     # prihlasovanie pomocou mena a hesla
@@ -60,20 +71,29 @@ class Database:
             return None
         return out[0][0]
 
-    def listUsers(self):
-        command = "SELECT * FROM users_list"
-        self.executeCommand(command)
-
+    # vrati vsetky informacie z tabulky users_list
     def getUserInfoFromId(self,id):
 
         command = "SELECT * FROM users_list WHERE id='" + str(id) + "'"
         out = self.executeCommand(command)
         return out
-
-
-
     
+    # vytvori zazam o prihlaseni uzivatela
+    def createLoginLogEntry(self,user_id):
 
+        if self.getUserInfoFromId(user_id) == 0:
+            return
 
+        # upravenie casu na string hhmmss
+        now = str(datetime.now().time()).split(":")
+        now[2] = now[2].split(".")[0]
+        time = now[0] + now[1] + now[2]
+        
+        # upravenie datumu na string ddmmrrrr
+        today_date = str(date.today()).split("-")
+        date_now = today_date[2] + today_date[1] + today_date[0]
 
-
+        values = "('" + str(user_id) + "','" + str(date_now) + "','" + str(time) + "')"
+        command = "INSERT INTO login_log(user_id,date,time) VALUES" + values
+        self.executeCommand(command)
+        
