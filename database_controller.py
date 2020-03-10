@@ -31,14 +31,14 @@ class Database:
             return 0
 
     # vykonanie query
-    def executeCommand(self,command):
+    def executeCommand(self, command):
         self.connection.ping(reconnect=True)
         self.cursor.execute(command)
         self.connection.commit()
         records = self.cursor.fetchall()
         
         #print(records)
-        print("query done")
+        #print("query done")
 
         if len(records) != 0:
             return records
@@ -46,14 +46,14 @@ class Database:
             return 0
 
     # registracia uzivatela
-    def addUser(self,name,secondName,password,email,loginName):
+    def addUser(self, name, secondName, password, email, loginName):
 
         # upravenie datumu na string ddmmrrrr
         today_date = str(date.today()).split("-")
         reg_day = today_date[2] + today_date[1] + today_date[0]
 
-        values = "values ( '" + name + "','" + secondName + "','" + password + "','" + email + "','" + reg_day + "','" + loginName + "')"
-        command = "INSERT INTO users_list(name,second_name,password,email,reg_day,login_username) " + values
+        values = "values ( '" + name + "','" + secondName + "','" + password + "','" + email + "','" + reg_day + "','" + "0" + "','" + loginName + "')"
+        command = "INSERT INTO users_list(name,second_name,password,email,reg_day,balance,login_username) " + values
         
         self.executeCommand(command)
 
@@ -63,7 +63,7 @@ class Database:
         self.executeCommand(command)
 
     # prihlasovanie pomocou mena a hesla
-    def getUserIdFromLogin(self,name,password):
+    def getUserIdFromLogin(self, name, password):
 
         command = "SELECT id FROM users_list WHERE name='" + name + "' AND password='" + password + "'"
         out = self.executeCommand(command)
@@ -72,14 +72,14 @@ class Database:
         return out[0][0]
 
     # vrati vsetky informacie z tabulky users_list
-    def getUserInfoFromId(self,id):
+    def getUserInfoFromId(self, id):
 
         command = "SELECT * FROM users_list WHERE id='" + str(id) + "'"
         out = self.executeCommand(command)
         return out
     
     # vytvori zazam o prihlaseni uzivatela
-    def createLoginLogEntry(self,user_id):
+    def createLoginLogEntry(self, user_id):
 
         if self.getUserInfoFromId(user_id) == 0:
             return
@@ -96,4 +96,30 @@ class Database:
         values = "('" + str(user_id) + "','" + str(date_now) + "','" + str(time) + "')"
         command = "INSERT INTO login_log(user_id,date,time) VALUES" + values
         self.executeCommand(command)
+    
+    # ziska akutalny stav uctu
+    def getUserBalance(self, user_id):
+
+        command = "SELECT balance FROM users_list WHERE id='" + str(user_id) + "'"
+        out = self.executeCommand(command)
+
+        return out[0][0]
+
+    # prida uzivatelovi peniaze na ucet
+    def addMoneyToUser(self, user_id, amount):
         
+        current_balance = self.getUserBalance(user_id)
+        balance = current_balance + int(amount)
+
+        command = "UPDATE users_list SET balance=" + str(balance) + " WHERE id=" + str(user_id)
+        #print(command)
+        self.executeCommand(command)
+
+    # odoberie uzivatelovi urcenu sumu penazi
+    def removeMoneyFromUser(self, user_id, amount):
+
+        current_balance = self.getUserBalance(user_id)
+        balance = current_balance - int(amount)
+
+        command = "UPDATE users_list SET balance=" + str(balance) + " WHERE id=" + str(user_id)
+        self.executeCommand(command)

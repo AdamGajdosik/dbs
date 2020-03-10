@@ -5,6 +5,8 @@ from config_parser import *
 
 
 class Application:
+
+    # pripojenie do DB, vytvorenie objektu DB
     def __init__(self):
 
         self.logged = 0
@@ -15,6 +17,7 @@ class Application:
         self.database.connect()
         print("[+] Connected to database!")
 
+    # registracia noveho uzivatela
     def register(self,name,secondName,password,passwordSecond,email,loginName):
 
         if password == passwordSecond:
@@ -23,6 +26,7 @@ class Application:
         else:
             return 0
 
+    # prihlasenie uzivatela
     def login(self,name,password):
         user_id = self.database.getUserIdFromLogin(name,password)
         if user_id != None:
@@ -32,11 +36,19 @@ class Application:
             return 1
         return 0
 
+    # vrati vsetky informacie o uzivatelovi
     def getInfo(self):
         out = self.database.getUserInfoFromId(self.user_id)
         return out
-        
 
+    # vrati stav uctu
+    def getBalance(self):
+        return self.database.getUserBalance(self.user_id)
+        
+    # nabije peniaze na ucet
+    def addMoney(self,amount):
+
+        self.database.addMoneyToUser(self.user_id,amount)
     
             
 

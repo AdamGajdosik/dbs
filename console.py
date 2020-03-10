@@ -3,12 +3,12 @@
 from main import *
 
 def register(app):
-    name = input("Name: ")
-    secondName = input("Second name: ")
-    email = input("Email: ")
-    loginName = input("Login name: ")
-    password = input("Password: ")
-    passwordSecond = input("Repeat: ")
+    name = input("[?] Name: ")
+    secondName = input("[?] Second name: ")
+    email = input("[?] Email: ")
+    loginName = input("[?] Login name: ")
+    password = input("[?] Password: ")
+    passwordSecond = input("[?] Repeat: ")
     out = app.register(name,secondName,password,passwordSecond,email,loginName)
     if out == 1:
         print("[+] Succes!")
@@ -16,8 +16,8 @@ def register(app):
         print("[-] Passwords do not match")
 
 def login(app):
-    name = input("Login name: ")
-    password = input("Password: ")
+    name = input("[?] Login name: ")
+    password = input("[?] Password: ")
     out = app.login(name,password)
     if out == 1:
         print("[+] Succesfuly logged in!")
@@ -41,12 +41,21 @@ def loginMenu(app):
 
 def loggedMenu(app):
     while True:
-        print("1, show my info\n0, exit")
+        print("1, show my info\n2, check balance\n3, add money to account\n0, exit")
         comm = input(">> ")
 
         if comm == "1":
             info = app.getInfo()
             print(info)
+
+        elif comm == "2":
+            balance = app.getBalance()
+            print("[!] Current balance is: " + str(balance))
+        
+        elif comm == "3":
+            amount = input("[?] How much: ")
+            app.addMoney(amount)
+
         elif comm == "0":
             exit(1)
 
