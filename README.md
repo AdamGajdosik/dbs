@@ -8,7 +8,7 @@ by Robo a Adam
 Tabulky:
 
 users_list:
-id(6) | name(20) | second_name(20) | password/hash(20) | email(30) | reg_day(8) | balance
+id(6) | name(20) | second_name(20) | password/hash(20) | email(30) | reg_day(8) | balance | login_username(20)
 
 horses:
 id(6) | name(20) | sortPriority() | status() | adjustementFactor?()

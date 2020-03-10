@@ -3,12 +3,15 @@
 import pymysql
 
 class Database:
+
+    # inicializacia prihlasovacich udajov
     def __init__(self,host,username,password,database_name):
         self.host = host
         self.password = password
         self.username = username
         self.db_name = database_name
     
+    # pripojenie do DB
     def connect(self):
         try:
             self.connection = pymysql.connect(self.host, self.username, self.password, self.db_name)
@@ -17,6 +20,7 @@ class Database:
         except:
             return 0
     
+    # dopojenie od DB
     def disconnect(self):
         try:
             self.connection.close()
@@ -24,37 +28,48 @@ class Database:
         except:
             return 0
 
+    # vykonanie query
     def executeCommand(self,command):
         self.connection.ping(reconnect=True)
         self.cursor.execute(command)
         self.connection.commit()
         records = self.cursor.fetchall()
         
-        print(records)
-        print("[+] Done!")
+        #print(records)
+        print("query done")
 
         if len(records) != 0:
             return records
         else:
             return 0
 
-    def addUser(self,name,secondName,password,email,reg_day):
-        values = "values ( '" + name + "','" + secondName + "','" + password + "','" + email + "','" + reg_day + "' )"
-        command = "INSERT INTO users_list(name,second_name,password,email,reg_day) " + values
-        #cemm = "insert into users_list(name,secondName,password,email,reg_day) VALUES('Adam','Gajdosik','hehahe','mail','12121212');"
+    # registracia uzivatela
+    def addUser(self,name,secondName,password,email,reg_day,loginName):
+
+        values = "values ( '" + name + "','" + secondName + "','" + password + "','" + email + "','" + reg_day + "','" + loginName + "')"
+        command = "INSERT INTO users_list(name,second_name,password,email,reg_day,login_username) " + values
+        
         self.executeCommand(command)
+
+    # prihlasovanie pomocou mena a hesla
+    def getUserIdFromLogin(self,name,password):
+
+        command = "SELECT id FROM users_list WHERE name='" + name + "' AND password='" + password + "'"
+        out = self.executeCommand(command)
+        if type(out) == int:
+            return None
+        return out[0][0]
 
     def listUsers(self):
         command = "SELECT * FROM users_list"
         self.executeCommand(command)
 
-    def test(self):
-        command = "INSERT INTO test VALUES('test')"
-        self.executeCommand(command)
-    
-    def listTest(self):
-        command = "SELECT * FROM test"
-        return self.executeCommand(command)
+    def getUserInfoFromId(self,id):
+
+        command = "SELECT * FROM users_list WHERE id='" + str(id) + "'"
+        out = self.executeCommand(command)
+        return out
+
 
 
     
