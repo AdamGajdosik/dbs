@@ -26,6 +26,20 @@ def login(app):
         print("[-] Wrong username or password")
         return 0
 
+def sendMoney(app):
+        receiver = input("[?] Receiver: ")
+        amount = input("[?] How much: ")
+        password = input("[?] Password: ")
+        out = app.sendMoneyToUser(receiver,int(amount),password)
+        if out == 0:
+            print("[-] User not found :O")
+        elif out == 1:
+            print("[+] Money sent :D")
+        elif out == 2:
+            print("[-] Wrong password :/")
+        elif out == 3:
+            print("[-] Not enough money :(")
+
 def loginMenu(app):
 
     while True:
@@ -41,7 +55,7 @@ def loginMenu(app):
 
 def loggedMenu(app):
     while True:
-        print("1, show my info\n2, check balance\n3, add money to account\n0, exit")
+        print("1, show my info\n2, check balance\n3, add money to account\n4, send money to someone\n0, exit")
         comm = input(">> ")
 
         if comm == "1":
@@ -55,6 +69,9 @@ def loggedMenu(app):
         elif comm == "3":
             amount = input("[?] How much: ")
             app.addMoney(amount)
+
+        elif comm == "4":
+            sendMoney(app)
 
         elif comm == "0":
             exit(1)

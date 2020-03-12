@@ -47,9 +47,31 @@ class Application:
         
     # nabije peniaze na ucet
     def addMoney(self,amount):
-
         self.database.addMoneyToUser(self.user_id,amount)
+
+    # odcita sumu penazi z uctu
+    def removeMoney(self, amount):
+        self.database.removeMoneyFromUser(self.user_id)
     
+    # posle peniaze na iny ucet
+    def sendMoneyToUser(self,receiver,amount,password):
+
+        receiver_id = self.database.getUserIdFromUsername(receiver)
+        if receiver_id == None:
+            return 0
+
+        user_password = self.database.getUserInfoFromId(self.user_id)[0][3]
+        if user_password != password:
+            return 2
+
+        if self.getBalance() < amount:
+            return 3
+        
+        self.database.addMoneyToUser(receiver_id,amount)
+        self.database.removeMoneyFromUser(self.user_id,amount)
+        self.database.addTransactionLog(self.user_id,receiver_id,amount)
+        return 1
+        
             
 
 

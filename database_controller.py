@@ -71,6 +71,18 @@ class Database:
             return None
         return out[0][0]
 
+    # ziska id z mena
+    def getUserIdFromUsername(self, name):
+
+        command = "SELECT id FROM users_list WHERE login_username='" + name + "'"
+        out = self.executeCommand(command)
+
+        # ak nenajde uzivatela vrati int nie tuple
+        if type(out) == int:
+            return None
+
+        return out[0][0]
+
     # vrati vsetky informacie z tabulky users_list
     def getUserInfoFromId(self, id):
 
@@ -122,4 +134,15 @@ class Database:
         balance = current_balance - int(amount)
 
         command = "UPDATE users_list SET balance=" + str(balance) + " WHERE id=" + str(user_id)
+        self.executeCommand(command)
+
+    # prida zaznam o tranzakcii do logu
+    def addTransactionLog(self, sender_id, receiver_id, amount):
+
+        today_date = str(date.today()).split("-")
+        day = today_date[2] + today_date[1] + today_date[0]
+
+        values = "('" + str(sender_id) + "','" + str(receiver_id) + "'," + str(amount) + "," + str(day) + ")"
+        
+        print(command)
         self.executeCommand(command)
