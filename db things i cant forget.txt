@@ -1,0 +1,60 @@
+show databases;
+use bline_db;
+show tables;
+select * from horses;
+select COUNT(*) from horses;
+select COUNT(*) from tracks;
+create table races (id bigint PRIMARY KEY, eventTypeId int, eventName varchar(50), numberOfWinners int, complete bool);
+
+select * from races;
+
+alter table horses modify id bigint;
+create table race_horses(race_id bigint, horse_id bigint, foreign key (race_id) references races(id), foreign key (horse_id) references horses(id), primary key (race_id, horse_id));
+
+select * from race_horses;
+
+delete from race_horses;
+
+insert into races (id, eventId, eventTypeId, eventName, numberOfWinners, complete) values (5,last_insert_id(1), 7, "ok", 1, true);SELECT LAST_INSERT_ID();
+set @test_race_id = last_insert_id();
+
+insert into horses(id, name, sorting_priority, status) values (last_insert_id(4), "test2", 1, "ACTIVE");SELECT LAST_INSERT_ID();
+set @horse_race_id = last_insert_id();
+
+select @horse_race_id;
+select @test_race_id;
+
+insert into race_horses(race_id, horse_id) values (1, 4);
+delete from horses where id=5;
+
+select * from races 
+left outer join race_horses on races.id=race_horses.race_id
+left outer join horses on horses.id=race_horses.horse_id;
+
+alter table races add time varchar(50) after numberOfWinners;
+
+delete from race_tracks_horses;
+delete from races;
+delete from horses;
+delete from tracks;
+
+select * from races;
+select * from horses;
+select * from race_tracks_horses;
+select * from tracks;
+
+SHOW TABLE STATUS FROM `bline_db` WHERE `name` LIKE 'races' ;
+
+alter table tracks auto_increment=1;
+
+alter table races change id eventId bigint;
+alter table races add column id bigint auto_increment primary key first;
+
+alter table races drop primary key;
+
+select count(*) from races;
+
+alter table races change complete status varchar(20);
+
+drop table race_horses;
+create table race_tracks_horses(race_id bigint, track_id bigint, horse_id bigint, foreign key (race_id) references races(id), foreign key (track_id) references tracks(id), foreign key (horse_id) references horses(id), primary key (race_id, track_id, horse_id));

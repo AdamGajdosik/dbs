@@ -27,15 +27,24 @@ class Application:
     def dataImport(self, id, name, sortPriority, status, venue, country, timezone):
         #print("meno", name)
         #print("som tu")
-        same = self.database.testForSameTracks(venue)
-        if same:
-            #print("uz tam je")
+        #same = self.database.testForSameTracks(venue)
+        if venue in addMany:
+            print("uz tam je")
             return
         else:
-            print("adding")
+            #print("adding")
             #self.database.addHorse(id, name, sortPriority, status)
             self.database.addTrack(venue,country,timezone)
 
+    def newImport(self, listToSend):
+        self.database.executeMany(listToSend)
+
+
+    def getRaceId(self):
+        return self.database.getLastRaceId()
+
+    def getTrackId(self):
+        return self.database.getLastTrackId()
 
             
 

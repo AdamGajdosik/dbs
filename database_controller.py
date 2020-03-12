@@ -38,6 +38,24 @@ class Database:
         else:
             return 0
 
+    def executeMany(self, listToSend):
+        self.connection.ping(reconnect=True)
+        #print(listToSend)
+        for x in listToSend:
+            print(x)
+            self.cursor.execute(x)
+        print("tu")
+        self.connection.commit()
+        records = self.cursor.fetchall()
+        
+       #print(records)
+        print("[+] Done!")
+
+        if len(records) != 0:
+            return records
+        else:
+            return 0
+
     def addUser(self,name,secondName,password,email,reg_day):
         values = "values ( '" + name + "','" + secondName + "','" + password + "','" + email + "','" + reg_day + "' )"
         command = "INSERT INTO users_list(name,second_name,password,email,reg_day) " + values
@@ -73,6 +91,12 @@ class Database:
         command = ("INSERT INTO tracks(name,country,timezone) values('%s','%s','%s')"%(venue,country,timezone))
         self.executeCommand(command)
 
+    def addManyTrack(self, data):
+        print("som tu")
+        command = "INSERT INTO tracks(name,country,timezone) values('%s','%s','%s')"
+        self.executeMany(command, data)
+
+
     def testForSameTracks(self, name):
         command = "SELECT EXISTS(SELECT * from tracks where name=" + "'" + name + "'" + ");"
         return self.executeCommand(command)[0][0]
@@ -80,11 +104,14 @@ class Database:
     def addRace(self, id, name, eventId, timezone, numberOfWinners, complete, runners):
         return
 
+    def getLastRaceId(self):
+        command = "select count(*) from races;"
+        return self.executeCommand(command)[0][0]
 
-
+    def getLastTrackId(self):
+        command = "select count(*) from tracks;"
+        return self.executeCommand(command)[0][0]
 
 
 
  
-
-    #INSERT INTO horses(id,name,sorting_priority,status) values ( '11184603','Glimpse of Gold','1','ACTIVE' )

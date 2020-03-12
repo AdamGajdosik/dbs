@@ -17,7 +17,7 @@ tracks:
 id() | country() | venue() | timezone() 
 
 races:
-id() | eventTypeId() | eventName() | numberOfWinners() | complete() | runners()
+id() | eventTypeId() | eventName() | numberOfWinners() | complete() | time() | runners()
 
 logs:
 id() | fromUser() | severity() | time()
