@@ -1,3 +1,4 @@
+
 #!/usr/bin/python3
 
 import json
@@ -12,9 +13,10 @@ listToSend = []
 duplicates = []
 
 baseId = test.getRaceId()+1
-baseTrackId = test.getTrackId()+1
+baseTrackId = test.getTrackId()
+temp = 1
 
-for root, dirs, files in os.walk('testData'):
+for root, dirs, files in os.walk('test'):
 
      for file in files:
         with open(os.path.join(root, file), "r") as f:
@@ -33,26 +35,29 @@ for root, dirs, files in os.walk('testData'):
             for i in zoznam:
                 b = 0
                 try:
+                    oldBaseTrackId = baseTrackId
+                    venue = zoznam[a]['mc'][0]['marketDefinition']['venue']
+                    country = zoznam[a]['mc'][0]['marketDefinition']['countryCode']
+                    timezone = zoznam[0]['mc'][0]['marketDefinition']['timezone']
+
+                    if venue not in duplicates:
+                        duplicates.append(venue)
+                        baseTrackId+=1
+                    command = ("INSERT INTO tracks(id,name,country,timezone) values(%d,'%s','%s','%s')"%(baseTrackId, venue,country,timezone))
+
+                    if command not in listToSend:
+                        listToSend.append(command)
+
                     eventId = zoznam[a]['mc'][0]['marketDefinition']['eventId']
                     eventTypeId = zoznam[a]['mc'][0]['marketDefinition']['eventTypeId']
                     numberOfWinners = zoznam[a]['mc'][0]['marketDefinition']['numberOfWinners']
                     eventName = zoznam[a]['mc'][0]['marketDefinition']['eventName']
                     time = zoznam[a]['mc'][0]['marketDefinition']['openDate']
                     status = zoznam[a]['mc'][0]['marketDefinition']['status']
-                    command = ("INSERT INTO races(id, eventId, eventTypeId, eventName, numberOfWinners, time, status) values(%d,%d,%d,'%s',%d,'%s','%s')"%(baseId, int(eventId), int(eventTypeId), eventName, numberOfWinners, time, status))
+                    command = ("INSERT INTO races(id, eventId, eventTypeId, eventName, numberOfWinners, time, status, track_id) values(%d,%d,%d,'%s',%d,'%s','%s', %d)"%(baseId, int(eventId), int(eventTypeId), eventName, numberOfWinners, time, status, baseTrackId))
                     oldBaseId = baseId
                     listToSend.append(command)
                     baseId+=1
-
-                    oldBaseTrackId = baseTrackId
-                    venue = zoznam[a]['mc'][0]['marketDefinition']['venue']
-                    country = zoznam[a]['mc'][0]['marketDefinition']['countryCode']
-                    timezone = zoznam[0]['mc'][0]['marketDefinition']['timezone']
-                    command = ("INSERT INTO tracks(id,name,country,timezone) values(%d,'%s','%s','%s')"%(oldBaseTrackId, venue,country,timezone))
-                    if command not in listToSend and venue not in duplicates:
-                        duplicates.append(venue)
-                        listToSend.append(command)
-                        baseTrackId+=1
                 except:
                     a+=1
                     continue
@@ -65,11 +70,11 @@ for root, dirs, files in os.walk('testData'):
                         adjustementFactor = zoznam[a]['mc'][0]['marketDefinition']['runners'][b]['adjustmentFactor']
                         status = zoznam[a]['mc'][0]['marketDefinition']['runners'][b]['status']
                         id = zoznam[a]['mc'][0]['marketDefinition']['runners'][b]['id']
-                        command = ("INSERT INTO horses(id,name,sorting_priority,status) values(%d,'%s',%d,'%s')"%(id, name, sortPriority, status))
+                        command = ("INSERT INTO horses(id,name,sorting_priority,adjustement) values(%d,'%s',%d,%.2f)"%(id, name, sortPriority, adjustementFactor))
                         if name not in duplicates:
                             duplicates.append(name)
                             listToSend.append(command)
-                        command = ("INSERT INTO race_tracks_horses(race_id, track_id, horse_id) values(%d,%d,%d)"%(oldBaseId, oldBaseTrackId, id))
+                        command = ("INSERT INTO race_horses(race_id, horse_id, status) values(%d,%d,'%s')"%(oldBaseId, id, status))
                         listToSend.append(command)
                         #venue = zoznam[0]['mc'][0]['marketDefinition']['venue']
                         #country = zoznam[0]['mc'][0]['marketDefinition']['countryCode']
@@ -77,7 +82,7 @@ for root, dirs, files in os.walk('testData'):
                         #test.dataImport(id,name, sortPriority, status, venue, country, timezone)
                         b+=1
                 except:
-
+                    print("nesu kone")
                     a+=1
                     continue
  

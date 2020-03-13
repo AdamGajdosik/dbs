@@ -41,10 +41,14 @@ class Database:
     def executeMany(self, listToSend):
         self.connection.ping(reconnect=True)
         #print(listToSend)
+        i = 0
         for x in listToSend:
-            print(x)
+            #print(x)
             self.cursor.execute(x)
-        print("tu")
+            i+=1
+            if (x[12:17] == "race_"):
+                self.connection.commit()
+                i = 0
         self.connection.commit()
         records = self.cursor.fetchall()
         
