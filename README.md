@@ -11,13 +11,16 @@ users_list:
 id(6) | name(20) | second_name(20) | password/hash(20) | email(30) | reg_day(8) | balance
 
 horses:
-id(6) | name(20) | sortPriority() | status() | adjustementFactor?()
+primary id(bigint) | name(varchar 50) | sortPriority(float) | adjustementFactor(float)
 
 tracks:
-id() | country() | venue() | timezone() 
+primary id(bigint) | name(varchar 50) | country(5) | timezone(20) 
 
 races:
-id() | eventTypeId() | eventName() | numberOfWinners() | complete() | time() | runners()
+primary id(bigint) | eventId(bigint) | eventTypeId(int) | eventName(varchar 50) | numberOfWinners(int) | time(varchar 50) | status(varchar 20) | foreign track_id(bigint) ref tracks(id)
+
+race_horses:
+primary race_id(bigint) foreign ref races(id) | primary horse_id(bigint) foreign ref horses(id)| status(varchar 20)
 
 logs:
 id() | fromUser() | severity() | time()
