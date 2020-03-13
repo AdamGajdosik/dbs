@@ -46,6 +46,14 @@ class Application:
     def getTrackId(self):
         return self.database.getLastTrackId()
 
+    def testForSameHorse(self, name):
+        return self.database.testForSameHorse(name)
+
+    def testForSameTrack(self, name):
+        return self.database.testForSameTrack(name)
+
+    def getSameTrackId(self, name):
+        return self.database.getTrackId(name)
             
 
 

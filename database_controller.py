@@ -31,7 +31,7 @@ class Database:
         records = self.cursor.fetchall()
         
        #print(records)
-        print("[+] Done!")
+        #print("[+] Done!")
 
         if len(records) != 0:
             return records
@@ -41,14 +41,11 @@ class Database:
     def executeMany(self, listToSend):
         self.connection.ping(reconnect=True)
         #print(listToSend)
-        i = 0
         for x in listToSend:
             #print(x)
             self.cursor.execute(x)
-            i+=1
             if (x[12:17] == "race_"):
                 self.connection.commit()
-                i = 0
         self.connection.commit()
         records = self.cursor.fetchall()
         
@@ -101,7 +98,7 @@ class Database:
         self.executeMany(command, data)
 
 
-    def testForSameTracks(self, name):
+    def testForSameTrack(self, name):
         command = "SELECT EXISTS(SELECT * from tracks where name=" + "'" + name + "'" + ");"
         return self.executeCommand(command)[0][0]
 
@@ -115,6 +112,14 @@ class Database:
     def getLastTrackId(self):
         command = "select count(*) from tracks;"
         return self.executeCommand(command)[0][0]
+
+    def testForSameHorse(self, name):
+        command = "SELECT EXISTS(SELECT * from horses where name=" + "'" + name + "'" + ");"
+        return self.executeCommand(command)[0][0]
+
+    def getTrackId(self, name):
+        command = "select id from tracks where name=" + "'" + name + "'" + ""
+        return self.executeCommand(command)
 
 
 
