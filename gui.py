@@ -1,23 +1,9 @@
-#!/usr/bin/python3
+# -*- coding: utf-8 -*-
 
-import tkinter as tk
-import pygubu
+# Form implementation generated from reading ui file 'bline_gui.ui'
+#
+# Created by: PyQt5 UI code generator 5.13.2
+#
+# WARNING! All changes made in this file will be lost!
 
-class App:
-    def __init__(self,root):
-        self.root = root
-        self.builder = pygubu.Builder()
-        builder = self.builder
-        builder.add_from_file("./gui_xml_files/heh.ui")
-        self.window = builder.get_object("Frame_1",root)
 
-        builder.connect_callbacks(self)
-
-    def on_click(self):
-        print("prd")
-        self.root.quit()
-
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = App(root)
-    root.mainloop()
