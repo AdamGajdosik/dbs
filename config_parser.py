@@ -20,6 +20,7 @@ class ConfigParser:
             open_conf = open(conf_file,"r")
         except:
             print("[-] Missing config file")
+            exit()
 
         while line != "#database_acces\n" and line !="END\n":
             line = open_conf.readline()
