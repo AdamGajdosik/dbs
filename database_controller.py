@@ -35,7 +35,6 @@ class Database:
         self.cursor.execute(command)
         self.connection.commit()
         records = self.cursor.fetchall()
-        
         #print(records)
         #print("query done")
 
@@ -53,7 +52,6 @@ class Database:
 
         values = "values ( '" + name + "','" + secondName + "','" + password + "','" + email + "','" + reg_day + "','" + "0" + "','" + loginName + "')"
         command = "INSERT INTO users_list(name,second_name,password,email,reg_day,balance,login_username) " + values
-        
         self.executeCommand(command)
 
     # vrati vsetkych uzivatelov
@@ -164,12 +162,6 @@ class Database:
             return records
         else:
             return 0
-
-    def addUser(self,name,secondName,password,email,reg_day):
-        values = "values ( '" + name + "','" + secondName + "','" + password + "','" + email + "','" + reg_day + "' )"
-        command = "INSERT INTO users_list(name,second_name,password,email,reg_day) " + values
-        #cemm = "insert into users_list(name,secondName,password,email,reg_day) VALUES('Adam','Gajdosik','hehahe','mail','12121212');"
-        self.executeCommand(command)
 
     def listUsers(self):
         command = "SELECT * FROM users_list"
