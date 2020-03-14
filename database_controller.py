@@ -35,7 +35,6 @@ class Database:
         self.cursor.execute(command)
         self.connection.commit()
         records = self.cursor.fetchall()
-        
         #print(records)
         #print("query done")
 
@@ -53,7 +52,6 @@ class Database:
 
         values = "values ( '" + name + "','" + secondName + "','" + password + "','" + email + "','" + reg_day + "','" + "0" + "','" + loginName + "')"
         command = "INSERT INTO users_list(name,second_name,password,email,reg_day,balance,login_username) " + values
-        
         self.executeCommand(command)
 
     # vrati vsetkych uzivatelov
