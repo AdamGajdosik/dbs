@@ -62,7 +62,7 @@ class Application:
     # posle peniaze na iny ucet
     def sendMoneyToUser(self,receiver,amount,password):
         
-        print(self.getBalance())
+        #print(self.getBalance())
         receiver_id = self.database.getUserIdFromUsername(receiver)
         if receiver_id == None:
             print("[-] User dont exists")
