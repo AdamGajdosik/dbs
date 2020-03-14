@@ -142,7 +142,8 @@ class Database:
         day = today_date[2] + today_date[1] + today_date[0]
 
         values = "('" + str(sender_id) + "','" + str(receiver_id) + "'," + str(amount) + "," + str(day) + ")"
-        
+        command = "INSERT INTO transaction_log (sender_id,receiver_id,amount,date) VALUES " + values
+
         print(command)
         self.executeCommand(command)
 
@@ -164,12 +165,6 @@ class Database:
             return records
         else:
             return 0
-
-    def addUser(self,name,secondName,password,email,reg_day):
-        values = "values ( '" + name + "','" + secondName + "','" + password + "','" + email + "','" + reg_day + "' )"
-        command = "INSERT INTO users_list(name,second_name,password,email,reg_day) " + values
-        #cemm = "insert into users_list(name,secondName,password,email,reg_day) VALUES('Adam','Gajdosik','hehahe','mail','12121212');"
-        self.executeCommand(command)
 
     def listUsers(self):
         command = "SELECT * FROM users_list"

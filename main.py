@@ -12,8 +12,12 @@ class Application:
         self.user_id = None
         
         db_acces = ConfigParser.getDatabaseAcces()
+        print(db_acces)
         self.database = Database(db_acces["host"],db_acces["user"],db_acces["password"],db_acces["database_name"])
-        self.database.connect()
+        out = self.database.connect()
+        if out == 0:
+            print("[-] Not connected to DB")
+            exit()
         print("[+] Connected to database!")
 
     # registracia noveho uzivatela
@@ -57,7 +61,8 @@ class Application:
     
     # posle peniaze na iny ucet
     def sendMoneyToUser(self,receiver,amount,password):
-
+        
+        print(self.getBalance())
         receiver_id = self.database.getUserIdFromUsername(receiver)
         if receiver_id == None:
             print("[-] User dont exists")
