@@ -5,8 +5,7 @@ from config_parser import *
 
 
 class Application:
-
-    # pripojenie do DB, vytvorenie objektu DB
+     # pripojenie do DB, vytvorenie objektu DB
     def __init__(self):
 
         self.logged = 0
@@ -71,7 +70,37 @@ class Application:
         self.database.removeMoneyFromUser(self.user_id,amount)
         self.database.addTransactionLog(self.user_id,receiver_id,amount)
         return 1
-        
+
+    def dataImport(self, id, name, sortPriority, status, venue, country, timezone):
+        #print("meno", name)
+        #print("som tu")
+        #same = self.database.testForSameTracks(venue)
+        if venue in addMany:
+            print("uz tam je")
+            return
+        else:
+            #print("adding")
+            #self.database.addHorse(id, name, sortPriority, status)
+            self.database.addTrack(venue,country,timezone)
+
+    def newImport(self, listToSend):
+        self.database.executeMany(listToSend)
+
+
+    def getRaceId(self):
+        return self.database.getLastRaceId()
+
+    def getTrackId(self):
+        return self.database.getLastTrackId()
+
+    def testForSameHorse(self, name):
+        return self.database.testForSameHorse(name)
+
+    def testForSameTrack(self, name):
+        return self.database.testForSameTrack(name)
+
+    def getSameTrackId(self, name):
+        return self.database.getTrackId(name)
             
 
 
