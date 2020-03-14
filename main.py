@@ -22,8 +22,10 @@ class Application:
 
         if password == passwordSecond:
             self.database.addUser(name,secondName,password,email,loginName)
+            print("[+] Succes!")
             return 1
         else:
+            print("[-] Error")
             return 0
 
     # prihlasenie uzivatela
@@ -33,6 +35,7 @@ class Application:
             self.database.createLoginLogEntry(user_id)
             self.logged = 1
             self.user_id = user_id
+            print("[+] Logged in!")
             return 1
         return 0
 
@@ -58,18 +61,28 @@ class Application:
 
         receiver_id = self.database.getUserIdFromUsername(receiver)
         if receiver_id == None:
+            print("[-] User dont exists")
             return 0
 
         user_password = self.database.getUserInfoFromId(self.user_id)[0][3]
         if user_password != password:
+            print("[-] Wrong password")
             return 2
 
         if self.getBalance() < amount:
+            print("[-] Not enough money")
             return 3
         
         self.database.addMoneyToUser(receiver_id,amount)
         self.database.removeMoneyFromUser(self.user_id,amount)
         self.database.addTransactionLog(self.user_id,receiver_id,amount)
+        print("[+] Done!")
         return 1
-        
-            
+
+    # odhlasenie   
+    def logOut(self):
+        self.user_id = None
+        self.logged = 0
+        print("[+] Loged out")
+
+    
