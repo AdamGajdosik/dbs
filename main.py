@@ -78,6 +78,13 @@ class Application:
         print("[+] Done!")
         return 1
 
+    # odhlasenie   
+    def logOut(self):
+        self.user_id = None
+        self.logged = 0
+        print("[+] Loged out")
+
+
     def dataImport(self, id, name, sortPriority, status, venue, country, timezone):
         #print("meno", name)
         #print("som tu")
@@ -112,10 +119,6 @@ class Application:
 
 
 
-    # odhlasenie   
-    def logOut(self):
-        self.user_id = None
-        self.logged = 0
-        print("[+] Loged out")
+
 
     
