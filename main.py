@@ -73,7 +73,3 @@ class Application:
         return 1
         
             
-
-
-
-

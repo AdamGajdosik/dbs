@@ -1,14 +1,17 @@
-#!/usr/bin/python3
+# -*- coding: utf-8 -*-
 
-import sys
-from PyQt5 import QtWidgets, uic
-from PyQt5.QtWidgets import QApplication, QMainWindow
+# Form implementation generated from reading ui file 'first_scene.ui'
+#
+# Created by: PyQt5 UI code generator 5.13.2
+#
+# WARNING! All changes made in this file will be lost!
+
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_first_window(object):
     def setupUi(self, first_window):
-        
         first_window.setObjectName("first_window")
         first_window.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(first_window)
