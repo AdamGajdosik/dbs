@@ -337,8 +337,8 @@
      <widget class="QLabel" name="logged_user_bline_label">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>30</y>
+        <x>0</x>
+        <y>20</y>
         <width>91</width>
         <height>81</height>
        </rect>
@@ -475,7 +475,175 @@
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="logged_user_money_screen"/>
+      <widget class="QWidget" name="logged_user_money_screen">
+       <widget class="QLabel" name="logged_user_balance_label">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>131</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Current balance</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="logged_user_balance_text">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>0</y>
+          <width>161</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="logged_user_transactions_label">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>50</y>
+          <width>131</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Last transactions</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="logged_user_transactions_text">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>80</y>
+          <width>341</width>
+          <height>361</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="logged_user_money_previous_button">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>440</y>
+          <width>91</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Previous</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="logged_user_money_next_button">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>440</y>
+          <width>91</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Next</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="logged_user_sendmoney_label">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>60</y>
+          <width>81</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Send money</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="logged_user_receiver_label">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>100</y>
+          <width>64</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Receiver</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="logged_user_amoun_label">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>140</y>
+          <width>71</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>How much</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="logged_user_password_label">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>180</y>
+          <width>71</width>
+          <height>19</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Password</string>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="logged_user_receiver_text">
+        <property name="geometry">
+         <rect>
+          <x>470</x>
+          <y>90</y>
+          <width>191</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="logged_user_amount_text">
+        <property name="geometry">
+         <rect>
+          <x>470</x>
+          <y>130</y>
+          <width>191</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="logged_user_password_text">
+        <property name="geometry">
+         <rect>
+          <x>470</x>
+          <y>170</y>
+          <width>191</width>
+          <height>31</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="logged_user_money_confirm_button">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>220</y>
+          <width>94</width>
+          <height>27</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Confirm</string>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </widget>
    </widget>

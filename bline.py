@@ -57,10 +57,13 @@ class Bline(Ui_Bline):
         self.login_submit.clicked.connect(self.loginSubmit)
 
         # logged user screen
+        #menu
         self.logged_user_logout_button.clicked.connect(self.logOut)
         self.logged_user_profile_button.clicked.connect(self.userProfileInfo)
         self.logged_user_money_button.clicked.connect(self.userMoneyManagement)
         self.logged_user_home_button.clicked.connect(self.userHomeScreen)
+        #money management
+        self.logged_user_money_confirm_button.clicked.connect(self.sendMoney)
 
     #
     # Menenie obrazovky
@@ -135,11 +138,22 @@ class Bline(Ui_Bline):
         string = info[1] + "\n" + info[2] + "\n" + info[4] + "\n" + info[7] + "\n" + reg_date
         self.output_test.setText(string)
 
-
     # sprava financii prihlaseneho uzivatela
     def userMoneyManagement(self):
         self.logged_user_menu.setCurrentIndex(2)
         
+    # posle peniaze adresatovi
+    def sendMoney(self):
+        receiver = self.logged_user_receiver_text.toPlainText()
+        amount = self.logged_user_amount_text.toPlainText()
+        password = self.logged_user_password_text.toPlainText()
+
+        try:
+            amount = int(amount)
+        except:
+            return
+        
+        out = self.logic.sendMoneyToUser(receiver,amount,password)
 
 
 
