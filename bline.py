@@ -59,8 +59,8 @@ class Bline(Ui_Bline):
         # logged user screen
         #menu
         self.logged_user_logout_button.clicked.connect(self.logOut)
-        self.logged_user_profile_button.clicked.connect(self.userProfileInfo)
-        self.logged_user_money_button.clicked.connect(self.userMoneyManagement)
+        self.logged_user_profile_button.clicked.connect(self.userProfileInfoScreen)
+        self.logged_user_money_button.clicked.connect(self.userMoneyManagementScreen)
         self.logged_user_home_button.clicked.connect(self.userHomeScreen)
         #money management
         self.logged_user_money_confirm_button.clicked.connect(self.sendMoney)
@@ -116,32 +116,16 @@ class Bline(Ui_Bline):
         if out == 1:
             print(self.logic.user_id)
             self.loggedUserScreen()
+            self.userHomeScreen()
 
     # odhlasovanie vsetkych uzivatelov
     def logOut(self):
 
         self.logic.logOut()
         self.mainMenu()
+        self.login_username.setText("")
+        self.login_password.setText("")
 
-    # domovska obrazovka prihlaseneho uzivatela
-    def userHomeScreen(self):
-        self.logged_user_menu.setCurrentIndex(0)
-
-    # prepne okno v menu a ukaze info o uzivatelovi    
-    def userProfileInfo(self):
-        self.logged_user_menu.setCurrentIndex(1)
-        info = self.logic.getInfo()
-        info = info[0]
-        date = info[5]
-        reg_date = TimeParser.toDate(date)
-        
-        string = info[1] + "\n" + info[2] + "\n" + info[4] + "\n" + info[7] + "\n" + reg_date
-        self.output_test.setText(string)
-
-    # sprava financii prihlaseneho uzivatela
-    def userMoneyManagement(self):
-        self.logged_user_menu.setCurrentIndex(2)
-        
     # posle peniaze adresatovi
     def sendMoney(self):
         receiver = self.logged_user_receiver_text.toPlainText()
@@ -154,8 +138,58 @@ class Bline(Ui_Bline):
             return
         
         out = self.logic.sendMoneyToUser(receiver,amount,password)
+        self.userMoneyManagementScreen()
+
+    #
+    # Uzivatelove obrazovky
+    #
+
+    # domovska obrazovka prihlaseneho uzivatela
+    def userHomeScreen(self):
+        self.logged_user_menu.setCurrentIndex(0)
+
+    # prepne okno v menu a ukaze info o uzivatelovi    
+    def userProfileInfoScreen(self):
+        self.logged_user_menu.setCurrentIndex(1)
+        info = self.logic.getInfo()
+        info = info[0]
+        date = info[5]
+        reg_date = TimeParser.toDate(date)
+        
+        string = info[1] + "\n" + info[2] + "\n" + info[4] + "\n" + info[7] + "\n" + reg_date
+        self.output_test.setText(string)
+
+    # sprava financii prihlaseneho uzivatela
+    # do jedneho stlpca pri transakciach sa zmesti najviac 19 riadkov
+    def userMoneyManagementScreen(self):
+        self.logged_user_menu.setCurrentIndex(2)
+        self.logged_user_balance_text.setText(str(self.logic.getBalance()))
+        
+        transactionList = self.logic.transactionsList()
+
+        self.logged_user_transactions_type_text.setText("")
+        self.logged_user_transactions_amount_text.setText("")
+        self.logged_user_transactions_user_text.setText("")
+        self.logged_user_transactions_date_text.setText("")
+
+        for transaction in transactionList:
+
+            if transaction[1] == self.logic.user_id:
+                self.logged_user_transactions_type_text.append("sent")
+                self.logged_user_transactions_user_text.append(self.logic.getOtherUsername(transaction[2]))
+                
+            else:
+                self.logged_user_transactions_type_text.append("received")
+                self.logged_user_transactions_user_text.append(self.logic.getOtherUsername(transaction[1]))
+
+            self.logged_user_transactions_amount_text.append(str(transaction[3]))
+            self.logged_user_transactions_date_text.append(TimeParser.toDate(transaction[4]))
+
+        self.logic.transactionCount()
+        
 
 
+    
 
 
 
