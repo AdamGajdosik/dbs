@@ -12,7 +12,6 @@ class Application:
         self.user_id = None
         
         db_acces = ConfigParser.getDatabaseAcces()
-        print(db_acces)
         self.database = Database(db_acces["host"],db_acces["user"],db_acces["password"],db_acces["database_name"])
         out = self.database.connect()
         if out == 0:
@@ -47,10 +46,14 @@ class Application:
         out = self.database.getUserInfoFromId(self.user_id)
         return out
 
+    # ziska meno z id
+    def getOtherUsername(self, user_id):
+        return self.database.getUsernameFromId(user_id)
+
     # vrati stav uctu
     def getBalance(self):
         return self.database.getUserBalance(self.user_id)
-        
+
     # nabije peniaze na ucet
     def addMoney(self,amount):
         self.database.addMoneyToUser(self.user_id,amount)
@@ -89,6 +92,13 @@ class Application:
         self.logged = 0
         print("[+] Loged out")
 
+    # ziska pocet transakcii
+    def transactionCount(self):
+        return self.database.getTransactionCount(self.user_id)
+
+    # vrati zaznamy transakcii
+    def transactionsList(self):
+        return self.database.getTransactionsList(self.user_id, 0, 0)
 
     def dataImport(self, id, name, sortPriority, status, venue, country, timezone):
         #print("meno", name)

@@ -188,14 +188,14 @@ class Ui_Bline(object):
         self.logged_user_transactions_label = QtWidgets.QLabel(self.logged_user_money_screen)
         self.logged_user_transactions_label.setGeometry(QtCore.QRect(0, 50, 131, 31))
         self.logged_user_transactions_label.setObjectName("logged_user_transactions_label")
-        self.logged_user_transactions_text = QtWidgets.QTextEdit(self.logged_user_money_screen)
-        self.logged_user_transactions_text.setGeometry(QtCore.QRect(0, 80, 341, 361))
-        self.logged_user_transactions_text.setObjectName("logged_user_transactions_text")
+        self.logged_user_transactions_type_text = QtWidgets.QTextEdit(self.logged_user_money_screen)
+        self.logged_user_transactions_type_text.setGeometry(QtCore.QRect(0, 80, 71, 361))
+        self.logged_user_transactions_type_text.setObjectName("logged_user_transactions_type_text")
         self.logged_user_money_previous_button = QtWidgets.QPushButton(self.logged_user_money_screen)
         self.logged_user_money_previous_button.setGeometry(QtCore.QRect(0, 440, 91, 27))
         self.logged_user_money_previous_button.setObjectName("logged_user_money_previous_button")
         self.logged_user_money_next_button = QtWidgets.QPushButton(self.logged_user_money_screen)
-        self.logged_user_money_next_button.setGeometry(QtCore.QRect(250, 440, 91, 27))
+        self.logged_user_money_next_button.setGeometry(QtCore.QRect(270, 440, 91, 27))
         self.logged_user_money_next_button.setObjectName("logged_user_money_next_button")
         self.logged_user_sendmoney_label = QtWidgets.QLabel(self.logged_user_money_screen)
         self.logged_user_sendmoney_label.setGeometry(QtCore.QRect(490, 60, 81, 19))
@@ -221,6 +221,15 @@ class Ui_Bline(object):
         self.logged_user_money_confirm_button = QtWidgets.QPushButton(self.logged_user_money_screen)
         self.logged_user_money_confirm_button.setGeometry(QtCore.QRect(520, 220, 94, 27))
         self.logged_user_money_confirm_button.setObjectName("logged_user_money_confirm_button")
+        self.logged_user_transactions_user_text = QtWidgets.QTextEdit(self.logged_user_money_screen)
+        self.logged_user_transactions_user_text.setGeometry(QtCore.QRect(70, 80, 141, 361))
+        self.logged_user_transactions_user_text.setObjectName("logged_user_transactions_user_text")
+        self.logged_user_transactions_amount_text = QtWidgets.QTextEdit(self.logged_user_money_screen)
+        self.logged_user_transactions_amount_text.setGeometry(QtCore.QRect(210, 80, 61, 361))
+        self.logged_user_transactions_amount_text.setObjectName("logged_user_transactions_amount_text")
+        self.logged_user_transactions_date_text = QtWidgets.QTextEdit(self.logged_user_money_screen)
+        self.logged_user_transactions_date_text.setGeometry(QtCore.QRect(270, 80, 91, 361))
+        self.logged_user_transactions_date_text.setObjectName("logged_user_transactions_date_text")
         self.logged_user_menu.addWidget(self.logged_user_money_screen)
         self.stackedWidget.addWidget(self.logged_user)
         Bline.setCentralWidget(self.centralwidget)
@@ -253,6 +262,11 @@ class Ui_Bline(object):
         self.label_7.setText(_translate("Bline", "Profile Info"))
         self.logged_user_balance_label.setText(_translate("Bline", "Current balance"))
         self.logged_user_transactions_label.setText(_translate("Bline", "Last transactions"))
+        self.logged_user_transactions_type_text.setHtml(_translate("Bline", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Cantarell\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.logged_user_money_previous_button.setText(_translate("Bline", "Previous"))
         self.logged_user_money_next_button.setText(_translate("Bline", "Next"))
         self.logged_user_sendmoney_label.setText(_translate("Bline", "Send money"))
@@ -260,6 +274,21 @@ class Ui_Bline(object):
         self.logged_user_amoun_label.setText(_translate("Bline", "How much"))
         self.logged_user_password_label.setText(_translate("Bline", "Password"))
         self.logged_user_money_confirm_button.setText(_translate("Bline", "Confirm"))
+        self.logged_user_transactions_user_text.setHtml(_translate("Bline", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Cantarell\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.logged_user_transactions_amount_text.setHtml(_translate("Bline", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Cantarell\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.logged_user_transactions_date_text.setHtml(_translate("Bline", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Cantarell\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
 
 
 if __name__ == "__main__":

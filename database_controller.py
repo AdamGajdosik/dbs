@@ -80,6 +80,13 @@ class Database:
 
         return out[0][0]
 
+    # ziska login z ID
+    def getUsernameFromId(self, user_id):
+
+        command = "SELECT login_username FROM users_list WHERE id='" + str(user_id) + "'"
+        out = self.executeCommand(command)
+        return out[0][0]
+
     # vrati vsetky informacie z tabulky users_list
     def getUserInfoFromId(self, id):
 
@@ -142,8 +149,22 @@ class Database:
         values = "('" + str(sender_id) + "','" + str(receiver_id) + "'," + str(amount) + "," + str(day) + ")"
         command = "INSERT INTO transaction_log (sender_id,receiver_id,amount,date) VALUES " + values
 
-        print(command)
+        #print(command)
         self.executeCommand(command)
+    
+    # zisti pocet transakcii
+    def getTransactionCount(self, user_id):
+
+        command = "SELECT COUNT(*) FROM transaction_log WHERE sender_id=" + str(user_id) + " OR receiver_id=" + str(user_id)
+        out = self.executeCommand(command)
+        return out
+
+    # zobrazi urcity pocet transakcii
+    def getTransactionsList(self, user_id, begin_index, end_index):
+        
+        command = "SELECT * FROM transaction_log WHERE sender_id=" + str(user_id) + " OR receiver_id=" + str(user_id) + " ORDER BY id DESC"
+        out = self.executeCommand(command)
+        return out
 
     def executeMany(self, listToSend):
         self.connection.ping(reconnect=True)
