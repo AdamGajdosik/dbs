@@ -48,8 +48,9 @@ Config_parser.py navod:
     ConfigParser.getDatabaseAcces() - vrati dictionary s pristupovymi udajmi do DB
 
 
+# Bline
 
-   
+Bline je systém podávania stávok na závody koní.. Systém využíva dáta z api Betfair-u, ktorá poskytuje dáta až 5 rokov dozadu a obsahujú krajiny, zápasy a kone, ktoré sa v nich zúčastnili. Náš systém umožní používateľovi sledovať historické dáta a využívať poskytnuté informácie na podávanie stávok na zápasy a to všetko v grafickom rozhraní s intuitívnym ovládaním. Viac informácií poskytnú osobitné scenáre nižšie.
     
     
 # Scenáre
@@ -61,17 +62,17 @@ Config_parser.py navod:
  -  Issues
       -  [Registrácia](/../../issues/1)
 
-Pouzívateľ sa vie do systému zaregistrovať pomocou emailu a hesla. Po verifikovaní emailu sa pomocou emailu a hesla dokáže do aplikácie prihlásiť
+Pouzívateľ sa vie do systému zaregistrovať pomocou emailu a hesla. Po verifikovaní emailu sa pomocou emailu a hesla dokáže do aplikácie prihlásiť.
 
 ## Import dát
 
  -  Verzia: v1.0
  -  Scenár: 2
- -  Milestone: tba
+ -  Milestone: [2. odovzdanie](https://github.com/AdamGajdosik/dbs/milestone/2)
  -  Issues
-      -  tba
+      -  [Scraper na dáta & upload do databázy](https://github.com/AdamGajdosik/dbs/issues/3)
 
-Všetky dáta pre fungovanie systému prevzaté z api BetFair. Obsahujú kone, závody, krajiny. 
+Všetky dáta pre fungovanie systému prevzaté z api BetFair. Obsahujú kone, závody, krajiny. Dostupné dáta sú od marca 2015. 
 
 ## Pridávanie dát
 
@@ -81,7 +82,7 @@ Všetky dáta pre fungovanie systému prevzaté z api BetFair. Obsahujú kone, z
  -  Issues
       -  tba
 
-Možnosť pridávania rôznych dát cez formulár.
+Možnosť pridávania rôznych dát cez formulár, ako je napríklad nový zápas, nový kôň, nová krajina pôsobnosti.
 
 ## Správa stávok
 
