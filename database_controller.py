@@ -179,6 +179,14 @@ class Database:
                 "WHERE race_id = " + str(race_id)
 
         return self.executeCommand(command)
+
+    # ziska info o konkretnom preteku
+    def getRaceInfoFromId(self, race_id):
+        command = "SELECT races.*, tracks.name " +\
+                "FROM races " +\
+                "JOIN tracks ON races.track_id = tracks.id " +\
+                "WHERE races.id = %d"%(race_id)
+        return self.executeCommand(command)
                 
     
 
