@@ -100,6 +100,15 @@ class Application:
     def transactionsList(self):
         return self.database.getTransactionsList(self.user_id, 0, 0)
 
+    # z db ziska vsetky kone co sa zucastnili preteku
+    def getHorsesFromRaceId(self, race_id):
+        return self.database.getHorsesFromRaceId(race_id)
+
+    # zobrazi 10 zaznamov od indexu
+    def getSomeRacesFromIndex(self, index, count):
+        return self.database.getRacesByIndex(index, count)
+    
+
     def dataImport(self, id, name, sortPriority, status, venue, country, timezone):
         #print("meno", name)
         #print("som tu")
@@ -130,6 +139,8 @@ class Application:
 
     def getSameTrackId(self, name):
         return self.database.getTrackId(name)
+
+    
             
 
 

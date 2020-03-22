@@ -1,0 +1,13 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "bline_db",
+            "dialect": "MariaDB",
+            "name": "raspberry",
+            "password": "P57xPnxD",
+            "port": 3306,
+            "server": "192.168.0.111",
+            "username": "adam"
+        }
+    ]
+}

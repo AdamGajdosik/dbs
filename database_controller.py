@@ -166,6 +166,22 @@ class Database:
         out = self.executeCommand(command)
         return out
 
+    # zobrazi urcity pocet pretekov
+    def getRacesByIndex(self, index, count):
+        command = "SELECT * FROM races LIMIT %d, %d"%(count*index,count+count*index)
+        return self.executeCommand(command)
+
+    # zaznamy vsetkych konov co sa zucastnili preteku
+    def getHorsesFromRaceId(self, race_id):
+        command = "SELECT horses.* FROM horses " +\
+                "JOIN race_horses ON race_horses.horse_id = horses.id " +\
+                "JOIN races ON race_horses.race_id = races.id " +\
+                "WHERE race_id = " + str(race_id)
+
+        return self.executeCommand(command)
+                
+    
+
     def executeMany(self, listToSend):
         self.connection.ping(reconnect=True)
         #print(listToSend)

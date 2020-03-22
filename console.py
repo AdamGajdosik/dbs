@@ -72,6 +72,12 @@ def loggedMenu(app):
 
         elif comm == "4":
             sendMoney(app)
+        
+        elif comm == "5":
+            print(app.getHorsesFromRaceId(1))
+
+        elif comm == "6":
+            print(app.getSomeRacesFromIndex(0,15))
 
         elif comm == "0":
             exit(1)
