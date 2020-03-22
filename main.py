@@ -98,7 +98,10 @@ class Application:
 
     # vrati zaznamy transakcii
     def transactionsList(self):
-        return self.database.getTransactionsList(self.user_id, 0, 0)
+        out = self.database.getTransactionsList(self.user_id, 0, 0)
+        if type(out) != tuple:
+            out = ()
+        return out
 
     # z db ziska vsetky kone co sa zucastnili preteku
     def getHorsesFromRaceId(self, race_id):
@@ -108,6 +111,8 @@ class Application:
     def getSomeRacesFromIndex(self, index, count):
         return self.database.getRacesByIndex(index, count)
     
+    def getWholeRaceInfoFromId(self, race_id):
+        return self.database.getRaceInfoFromId(race_id)[0]
 
     def dataImport(self, id, name, sortPriority, status, venue, country, timezone):
         #print("meno", name)
@@ -123,6 +128,7 @@ class Application:
 
     def newImport(self, listToSend):
         self.database.executeMany(listToSend)
+
 
 
     def getRaceId(self):

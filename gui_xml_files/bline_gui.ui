@@ -446,6 +446,53 @@
          <string>News:</string>
         </property>
        </widget>
+       <widget class="QWidget" name="verticalLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>100</y>
+          <width>321</width>
+          <height>351</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QCommandLinkButton" name="news_button_1">
+           <property name="text">
+            <string>CommandLinkButton</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCommandLinkButton" name="news_button_2">
+           <property name="text">
+            <string>CommandLinkButton</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCommandLinkButton" name="news_button_3">
+           <property name="text">
+            <string>CommandLinkButton</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCommandLinkButton" name="news_button_4">
+           <property name="text">
+            <string>CommandLinkButton</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCommandLinkButton" name="news_button_5">
+           <property name="text">
+            <string>CommandLinkButton</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </widget>
       <widget class="QWidget" name="logged_user_myprofile_screen">
        <widget class="QTextEdit" name="output_test">
@@ -702,6 +749,67 @@ p, li { white-space: pre-wrap; }
         </property>
        </widget>
       </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="race_details">
+     <widget class="QPushButton" name="race_detail_back_button">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>20</y>
+        <width>94</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Back</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="race_details_info_text">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>130</y>
+        <width>351</width>
+        <height>391</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="race_details_info_label">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>100</y>
+        <width>101</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>General info</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="race_details_horses_label">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>100</y>
+        <width>64</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Horses</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="race_details_horses_text">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>130</y>
+        <width>241</width>
+        <height>391</height>
+       </rect>
+      </property>
      </widget>
     </widget>
    </widget>
