@@ -131,8 +131,15 @@ class Bline(Ui_Bline):
         username = self.reg_username.toPlainText()
 
         out = self.logic.register(name,secondName,password,passwordRepeat,email,username)
+        if out == 1:
+            self.main_screen_info_label.setText("Succesfuly registred!")
+            self.mainMenu()
 
-        self.mainMenu()
+        elif out == 0:
+            self.register_screen_info_label.setText("Passwords do not match")
+
+        
+        
 
     # odosle prihlasovacie udaje
     def loginSubmit(self):
