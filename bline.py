@@ -75,11 +75,13 @@ class Bline(Ui_Bline):
     def welcomeScreen(self):
         self.stackedWidget.setCurrentIndex(0)
         self.mainScreenIndex = 0
+        
 
     # ide do hlavneho menu
     def mainMenu(self):
         self.stackedWidget.setCurrentIndex(1)
         self.mainScreenIndex = 1
+        self.register_screen_info_label.setText("")
     
     # ide do registrace uzivatela
     def registerScreen(self):
@@ -123,12 +125,12 @@ class Bline(Ui_Bline):
 
     # odosle registraciu
     def registerSubmit(self):
-        name = self.reg_name.toPlainText()
-        secondName = self.reg_second_name.toPlainText()
-        email = self.reg_email.toPlainText()
-        password = self.reg_password.toPlainText()
-        passwordRepeat = self.reg_password_repeat.toPlainText()
-        username = self.reg_username.toPlainText()
+        name = self.reg_name.text()
+        secondName = self.reg_second_name.text()
+        email = self.reg_email.text()
+        password = self.reg_password.text()
+        passwordRepeat = self.reg_password_repeat.text()
+        username = self.reg_username.text()
 
         out = self.logic.register(name,secondName,password,passwordRepeat,email,username)
         if out == 1:
@@ -144,8 +146,8 @@ class Bline(Ui_Bline):
     # odosle prihlasovacie udaje
     def loginSubmit(self):
         
-        username = self.login_username.toPlainText()
-        password = self.login_password.toPlainText()
+        username = self.login_username.text()
+        password = self.login_password.text()
 
         out = self.logic.login(username,password)
         if out == 1:
@@ -160,6 +162,7 @@ class Bline(Ui_Bline):
         self.mainMenu()
         self.login_username.setText("")
         self.login_password.setText("")
+        self.main_screen_info_label.setText("")
 
     # posle peniaze adresatovi
     def sendMoney(self):

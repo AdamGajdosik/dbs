@@ -111,84 +111,6 @@
      </widget>
     </widget>
     <widget class="QWidget" name="registration">
-     <widget class="QTextEdit" name="reg_name">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>120</y>
-        <width>331</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="cursor" stdset="0">
-       <cursorShape>IBeamCursor</cursorShape>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="reg_second_name">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>160</y>
-        <width>331</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="cursor" stdset="0">
-       <cursorShape>IBeamCursor</cursorShape>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="reg_email">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>200</y>
-        <width>331</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="cursor" stdset="0">
-       <cursorShape>IBeamCursor</cursorShape>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="reg_password">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>240</y>
-        <width>331</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="cursor" stdset="0">
-       <cursorShape>IBeamCursor</cursorShape>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="reg_password_repeat">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>280</y>
-        <width>331</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="cursor" stdset="0">
-       <cursorShape>IBeamCursor</cursorShape>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="reg_username">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>320</y>
-        <width>331</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="cursor" stdset="0">
-       <cursorShape>IBeamCursor</cursorShape>
-      </property>
-     </widget>
      <widget class="QPushButton" name="register_confirm">
       <property name="geometry">
        <rect>
@@ -299,32 +221,75 @@
        <string/>
       </property>
      </widget>
+     <widget class="QLineEdit" name="reg_name">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>120</y>
+        <width>331</width>
+        <height>29</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="reg_second_name">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>160</y>
+        <width>331</width>
+        <height>29</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="reg_email">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>200</y>
+        <width>331</width>
+        <height>29</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="reg_password">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>240</y>
+        <width>331</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="reg_password_repeat">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>280</y>
+        <width>331</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="reg_username">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>320</y>
+        <width>331</width>
+        <height>29</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="registration_result"/>
     <widget class="QWidget" name="login">
-     <widget class="QTextEdit" name="login_username">
-      <property name="geometry">
-       <rect>
-        <x>260</x>
-        <y>130</y>
-        <width>261</width>
-        <height>31</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QTextEdit" name="login_password">
-      <property name="geometry">
-       <rect>
-        <x>260</x>
-        <y>210</y>
-        <width>261</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="inputMethodHints">
-       <set>Qt::ImhHiddenText</set>
-      </property>
-     </widget>
      <widget class="QLabel" name="login_username_label">
       <property name="geometry">
        <rect>
@@ -362,6 +327,29 @@
       </property>
       <property name="text">
        <string>Login</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="login_password">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>220</y>
+        <width>231</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="echoMode">
+       <enum>QLineEdit::Password</enum>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="login_username">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>130</y>
+        <width>231</width>
+        <height>29</height>
+       </rect>
       </property>
      </widget>
     </widget>
