@@ -166,9 +166,9 @@ class Bline(Ui_Bline):
 
     # posle peniaze adresatovi
     def sendMoney(self):
-        receiver = self.logged_user_receiver_text.toPlainText()
-        amount = self.logged_user_amount_text.toPlainText()
-        password = self.logged_user_password_text.toPlainText()
+        receiver = self.logged_user_receiver_text.text()
+        amount = self.logged_user_amount_text.text()
+        password = self.logged_user_password_text.text()
 
         try:
             amount = int(amount)
@@ -214,7 +214,9 @@ class Bline(Ui_Bline):
         self.logged_user_balance_text.setText(str(self.logic.getBalance()))
         
         transactionList = self.logic.transactionsList()
-
+        self.logged_user_amount_text.setText("")
+        self.logged_user_password_text.setText("")
+        self.logged_user_receiver_text.setText("")
         self.logged_user_transactions_type_text.setText("")
         self.logged_user_transactions_amount_text.setText("")
         self.logged_user_transactions_user_text.setText("")
