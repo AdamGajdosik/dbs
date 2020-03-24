@@ -62,7 +62,7 @@ class Database:
     # prihlasovanie pomocou mena a hesla
     def getUserIdFromLogin(self, name, password):
 
-        command = "SELECT id FROM users_list WHERE name='" + name + "' AND password='" + password + "'"
+        command = "SELECT id FROM users_list WHERE login_username='" + name + "' AND password='" + password + "'"
         out = self.executeCommand(command)
         if type(out) == int:
             return None

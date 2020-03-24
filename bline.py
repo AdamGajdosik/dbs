@@ -144,15 +144,15 @@ class Bline(Ui_Bline):
 
         out = self.logic.register(name,secondName,password,passwordRepeat,email,username)
         if out == 1:
-            self.main_screen_info_label.setText("Succesfuly registred!")
+            self.main_screen_info_label.setText("Successfully registered!")
             self.mainMenu()
 
         elif out == 0:
             self.register_screen_info_label.setText("Passwords do not match")
         elif out == 2:
-            self.register_screen_info_label.setText("Username allready used")
+            self.register_screen_info_label.setText("Username already used")
         elif out == 3:
-            self.register_screen_info_label.setText("Email allready used")
+            self.register_screen_info_label.setText("Email already used")
         
 
     # odosle prihlasovacie udaje
