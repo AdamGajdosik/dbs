@@ -220,6 +220,9 @@
       <property name="text">
        <string/>
       </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
      </widget>
      <widget class="QLineEdit" name="reg_name">
       <property name="geometry">
@@ -287,6 +290,19 @@
        </rect>
       </property>
      </widget>
+     <widget class="QPushButton" name="register_screen_back_button">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>20</y>
+        <width>94</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Back</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="registration_result"/>
     <widget class="QWidget" name="login">
@@ -350,6 +366,19 @@
         <width>231</width>
         <height>29</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="login_screen_back_button">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>20</y>
+        <width>94</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Back</string>
       </property>
      </widget>
     </widget>

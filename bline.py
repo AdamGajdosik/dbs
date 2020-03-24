@@ -45,9 +45,11 @@ class Bline(Ui_Bline):
 
         # registration screen
         self.register_confirm.clicked.connect(self.registerSubmit)
+        self.register_screen_back_button.clicked.connect(self.mainMenu)
 
         # login screen
         self.login_submit.clicked.connect(self.loginSubmit)
+        self.login_screen_back_button.clicked.connect(self.mainMenu)
 
         # logged user screen
         #menu
@@ -55,7 +57,7 @@ class Bline(Ui_Bline):
         self.logged_user_profile_button.clicked.connect(self.userProfileInfoScreen)
         self.logged_user_money_button.clicked.connect(self.userMoneyManagementScreen)
         self.logged_user_home_button.clicked.connect(self.userHomeScreen)
-        #money management
+        #money management   
         self.logged_user_money_confirm_button.clicked.connect(self.sendMoney)
         #home screen
         self.news_button_1.clicked.connect(lambda: self.raceDetailScreen(self.news_races[0][0]))
@@ -87,11 +89,19 @@ class Bline(Ui_Bline):
     def registerScreen(self):
         self.stackedWidget.setCurrentIndex(2)
         self.mainScreenIndex = 2
+        self.reg_name.setText("")
+        self.reg_email.setText("")
+        self.reg_password.setText("")
+        self.reg_password_repeat.setText("")
+        self.reg_second_name.setText("")
+        self.reg_username.setText("")
 
     # ide na prihlasenie uzivatela
     def loginScreen(self):
         self.stackedWidget.setCurrentIndex(4)
         self.mainScreenIndex = 4
+        self.login_username.setText("")
+        self.login_password.setText("")
 
     # obrazovka prihlaseneho uzivatela
     def loggedUserScreen(self):
@@ -139,8 +149,10 @@ class Bline(Ui_Bline):
 
         elif out == 0:
             self.register_screen_info_label.setText("Passwords do not match")
-
-        
+        elif out == 2:
+            self.register_screen_info_label.setText("Username allready used")
+        elif out == 3:
+            self.register_screen_info_label.setText("Email allready used")
         
 
     # odosle prihlasovacie udaje
@@ -159,9 +171,7 @@ class Bline(Ui_Bline):
     def logOut(self):
 
         self.logic.logOut()
-        self.mainMenu()
-        self.login_username.setText("")
-        self.login_password.setText("")
+        self.mainMenu() 
         self.main_screen_info_label.setText("")
 
     # posle peniaze adresatovi

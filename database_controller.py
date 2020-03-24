@@ -187,7 +187,17 @@ class Database:
                 "JOIN tracks ON races.track_id = tracks.id " +\
                 "WHERE races.id = %d"%(race_id)
         return self.executeCommand(command)
-                
+
+    # zisti ci sa tam uz nachadza mail
+    def checkEmail(self, email):
+        command = "SELECT count(*) FROM users_list WHERE email='%s' "%(email)  
+        out = self.executeCommand(command)
+        out = out[0][0]
+        if out != 0:
+            return 1
+        else:
+            return 0
+        
     
 
     def executeMany(self, listToSend):

@@ -22,12 +22,20 @@ class Application:
     # registracia noveho uzivatela
     def register(self,name,secondName,password,passwordSecond,email,loginName):
 
+        if self.database.checkEmail(email):
+            print("[-] Error - email exists")
+            return 3
+
+        # existuje uzivatelske meno
+        if self.database.getUserIdFromUsername(loginName) != None:
+            print("[-] Error - username exists")
+            return 2
         if password == passwordSecond:
             self.database.addUser(name,secondName,password,email,loginName)
             print("[+] Succes!")
             return 1
         else:
-            print("[-] Error")
+            print("[-] Error - no match")
             return 0
 
     # prihlasenie uzivatela
