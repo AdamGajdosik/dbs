@@ -248,16 +248,17 @@ class Bline(Ui_Bline):
         self.logic.transactionCount()
         
 
-
-
 def main():
     logic = Application()
     app = QtWidgets.QApplication(sys.argv)
+    trayIcon = QtWidgets.QSystemTrayIcon(QtGui.QIcon("xx.png"), app) 
+    trayIcon.show()
     Bline_win = QtWidgets.QMainWindow()
     ui = Bline(logic)
     ui.setupUi(Bline_win)
+    Bline_win.setWindowTitle("Bline")
+    Bline_win.setWindowIcon(QtGui.QIcon('xx.png'))
     Bline_win.show()
-
     
     ui.mainMenu()
     sys.exit(app.exec_())
